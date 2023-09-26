@@ -1,5 +1,9 @@
-FROM openjdk:17-jdk
+FROM maven:3.8.4-openjdk-17
 
-COPY target/produtos-ms-0.0.1-SNAPSHOT.jar produtos-ms-0.0.1-SNAPSHOT.jar
+WORKDIR /app
+
+COPY . .
+
+RUN mvn package
 
 CMD ["java", "-jar", "produtos-ms-0.0.1-SNAPSHOT.jar"]
