@@ -19,8 +19,8 @@ jobs:
         run: |
           docker build -t eureka-server-image ./eureka-server
           docker build -t api-gateway-image ./api-gateway
-          docker build -t ticket-ms-image ./ticket-service
-          docker build -t produtos-ms-image ./produto-service
+          docker build -t ticket-ms-image ./ticket-ms
+          docker build -t produtos-ms-image ./produtos-ms
 
       - name: Login to Docker Hub
         run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
