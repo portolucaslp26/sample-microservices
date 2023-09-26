@@ -1,5 +1,15 @@
 FROM openjdk:17-jdk
 
+ENV EUREKA_SERVER_PORT=8761
+ENV EUREKA_INSTANCE_HOSTNAME=eureka-server
+ENV EUREKA_INSTANCE_NON_SECURE_PORT=8761
+ENV EUREKA_INSTANCE_STATUSPAGE_URLPATH=info
+ENV EUREKA_INSTANCE_HEALTHCHECK_URLPATH=health
+
+RUN apk update && apk add openjdk17
+
+EXPOSE $EUREKA_SERVER_PORT
+
 COPY target/eureka-server-0.0.1-SNAPSHOT.jar eureka-server-0.0.1-SNAPSHOT.jar
 
 CMD ["java", "-jar", "eureka-server-0.0.1-SNAPSHOT.jar"]
