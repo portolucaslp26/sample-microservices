@@ -1,12 +1,12 @@
 version: '3'
 services:
   eureka-server:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server-image
+    image: lorenzo2017/eureka-server-image
     ports:
       - "8761:8761"
     
   api-gateway:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway-image
+    image: lorenzo2017/api-gateway-image
     depends_on:
       - eureka-server
     ports:
@@ -15,7 +15,7 @@ services:
         - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
 
   ticket-service:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/ticket-ms-image
+    image: lorenzo2017/ticket-ms-image
     depends_on:
       - api-gateway
     ports:
@@ -24,7 +24,7 @@ services:
         - eureka.client.serviceUrl.defaultZone=http://eureka-server:8761/eureka/
 
   produto-service:
-    image: ${{ secrets.DOCKERHUB_USERNAME }}/produtos-ms-image
+    image: lorenzo2017/produtos-ms-image
     depends_on:
       - ticket-service
     ports:
