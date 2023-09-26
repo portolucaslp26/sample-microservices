@@ -27,10 +27,10 @@ jobs:
 
       - name: Push Docker images to Docker Hub
         run: |
-          docker push eureka-server-image
-          docker push api-gateway-image
-          docker push ticket-ms-image
-          docker push produtos-ms-image
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server-image
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway-image
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ticket-ms-image
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/produtos-ms-image
 
   deploy:
 
